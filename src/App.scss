@@ -1,7 +1,7 @@
-
+$activeColor: #00bfff;
 body {
   padding: 0;
- margin: 0;
+  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -9,3 +9,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.app-container {
+  .header-container {
+    .navbar-expand-lg {
+    }
+    .navbar-nav {
+      .nav-link {
+        &.active {
+          color: $activeColor
+        }
+      }
+    }
+  }
+}
