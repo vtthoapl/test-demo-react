@@ -1,4 +1,14 @@
 $activeColor: #00bfff;
+@mixin blackbtn{
+  border-radius: 5px;
+  padding: 0 15px;
+  background: #303030;
+  color: white;
+  height: 40px;
+  &:hover {
+    background: black;
+  } 
+}
 body {
   padding: 0;
   margin: 0;
@@ -8,17 +18,65 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+@media (min-width: 1350px) {
+  .container,
+  .container-sm {
+    max-width: 1300px !important
+  }
+}
 .app-container {
   .header-container {
-    .navbar-expand-lg {
+    .btn-login {
+      border-radius: 5px;
+      margin-right: 15px;
+      padding: 0 15px;
+      border: 1px solid #535353;
+      height: 40px;
     }
-    .navbar-nav {
+    .btn-signup {
+      @include blackbtn;
+      &:hover {
+        background: black;
+      } 
+    }
+    .navbar {
+      padding-top: 20px;
+      z-index: 10;
+      // opacity: 0.6;
+      background-color: rgba(0, 0, 0, 0) !important;
       .nav-link {
         &.active {
-          color: $activeColor
+          color: $activeColor;
         }
       }
     }
   }
+  .homepage-container{
+    .homepage-content{
+      position: relative;
+      padding: 100px;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      .title-1{
+        font-size: 35px;
+      }
+      .title-2{
+        font-size: 22px;
+      }
+      .btn-title-3{
+        @include blackbtn;
+       &:hover {
+        background: black;
+      } 
+      }
+    }
+  }
+}
+
+video {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
 }
