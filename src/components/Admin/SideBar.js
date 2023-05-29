@@ -10,20 +10,20 @@ import {
 } from 'react-pro-sidebar';
 
 import {
-  FaTachometerAlt,
+  //FaTachometerAlt,
   FaGem,
-  FaList,
+  // FaList,
   FaGithub,
-  FaRegLaughWink,
-  FaHeart,
+  //FaRegLaughWink,
+  // FaHeart,
 } from 'react-icons/fa';
 import sidebarBg from '../../assets/bg2.jpg';
 import { DiReact } from 'react-icons/di';
 import { MdDashboard } from 'react-icons/md';
-import './SideBar.scss';
+import '../Admin/SideBar.scss';
 
 const SideBar = (props) => {
-  const { image, collapsed, toggled, handleToggleSidebar } = props;
+  const { /* image, */ collapsed, toggled, handleToggleSidebar } = props;
   return (
     <>
       <ProSidebar
@@ -53,20 +53,14 @@ const SideBar = (props) => {
 
         <SidebarContent>
           <Menu iconShape="circle">
-            <MenuItem
-              icon={<MdDashboard />}
-            >
-              Dashboard
-            </MenuItem>
+            <MenuItem icon={<MdDashboard />}>Dashboard</MenuItem>
           </Menu>
           <Menu iconShape="circle">
-            <SubMenu Icon={<FaGem />}
-            title="Features">
-              <MenuItem> Users</MenuItem>
+            <SubMenu Icon={<FaGem />} title="Features">
+              <MenuItem> User </MenuItem>
               <MenuItem> Quiz</MenuItem>
               <MenuItem> Questions</MenuItem>
             </SubMenu>
-
           </Menu>
         </SidebarContent>
 
@@ -100,5 +94,4 @@ const SideBar = (props) => {
     </>
   );
 };
-
 export default SideBar;
