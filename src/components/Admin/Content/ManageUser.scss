@@ -1,6 +1,13 @@
 .manager-user-container{
-    .users-content{
-        
+    padding: 10px;
+    .user-content{
+       .btn-add-new{
+        margin: 15px 0;
+       }
+    }
+    .title{
+        font-weight: 600;
+        font-size: 20px;
     }
 }
 .modal-add-user{
@@ -22,6 +29,7 @@
         gap: 5px;
         display: flex;
         align-items: center;
+        width: -moz-fit-content;
         width: fit-content;
         padding: 3px 10px;
         background-color: #eeeeee;
