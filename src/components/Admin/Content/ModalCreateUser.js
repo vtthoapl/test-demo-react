@@ -2,21 +2,20 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FcPlus } from 'react-icons/fc';
-import axios from 'axios';
 import { toast } from 'react-toastify';
+import { postCreateNewUser } from '../../../services/apiServices';
 
 const ModalCreateUser = (props) => {
   const { show, setShow } = props;
   const handleClose = () => {
-    setShow(false)
-    setEmail('')
-    setPassword('')
-    setUsername('')
-    setRole('USER')
-    setImage('')
-    setPreviewImage('')
+    setShow(false);
+    setEmail('');
+    setPassword('');
+    setUsername('');
+    setRole('USER');
+    setImage('');
+    setPreviewImage('');
   };
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
@@ -42,36 +41,23 @@ const ModalCreateUser = (props) => {
   };
   const handleSubmitUser = async () => {
     //validate
-    const  isValidEmail = validateEmail(email)
-    if(!isValidEmail){
-      toast.error('invalid email')
-      /* toast.success('sucess')
-      toast.info('information') */
-      return
+    const isValidEmail = validateEmail(email);
+    if (!isValidEmail) {
+      toast.error('invalid email');
+      return;
     }
-    if(!password){
-      toast.error('invalid password')
-      return
+    if (!password) {
+      toast.error('invalid password');
+      return;
     }
-    //submit data
-    const data = new FormData();
-    data.append('email', email);
-    data.append('password', password);
-    data.append('username', username);
-    data.append('role', role);
-    data.append('userImage', image);
-
-    const res = await axios.post(
-      'http://localhost:8081/api/v1/participant',
-      data
-    );
-    console.log('check>>', res.data)
-    if(res.data && res.data.EC === 0){
-      toast.success(res.data.EM)
-      handleClose()
+    const data = await postCreateNewUser(email, password, username, role, image);
+    console.log('component.res: ', data);
+    if (data && data.EC === 0) {
+      toast.success(data.EM);
+      handleClose();
     }
-    if(res.data && res.data.EC !== 0){
-      toast.error(res.data.EM)
+    if (data && data.EC !== 0) {
+      toast.error(data.EM);
     }
   };
 
@@ -152,7 +138,7 @@ const ModalCreateUser = (props) => {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={()=>handleClose()}>
+          <Button variant="secondary" onClick={() => handleClose()}>
             Close
           </Button>
           <Button variant="primary" onClick={() => handleSubmitUser()}>
