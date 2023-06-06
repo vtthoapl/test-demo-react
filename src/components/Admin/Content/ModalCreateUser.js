@@ -51,7 +51,6 @@ const ModalCreateUser = (props) => {
       return;
     }
     const data = await postCreateNewUser(email, password, username, role, image);
-    console.log('component.res: ', data);
     if (data && data.EC === 0) {
       toast.success(data.EM);
       handleClose();
@@ -63,9 +62,6 @@ const ModalCreateUser = (props) => {
 
   return (
     <>
-      {/*  <Button variant="primary" onClick={handleShow}>
-        Launch modal
-      </Button> */}
       <Modal
         show={show}
         onHide={handleClose}
